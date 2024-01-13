@@ -74,7 +74,77 @@ fn main() {
     // println!("{}", r4);
 
     // Dangling References
-    let reference_to_nothing = dangle();
+    // let reference_to_nothing = dangle();
+
+    // The Slice Type
+    // let mut s = String::from("hello world");
+    // let word = first_word(&s);
+    // println!("word: {}", word);
+    // s.clear();
+
+    // String Slices
+    // {
+    //     let s = String::from("hello world");
+
+    //     let hello = &s[0..5];
+    //     let world = &s[6..11];
+
+    //     println!("{},{}", hello, world);
+    // }
+    // {
+    //     let s = String::from("hello");
+    //     let slice = &s[0..2];
+    //     println!("slice1:{}", slice);
+    //     let slice = &s[..2];
+    //     println!("slice2:{}", slice);
+    // }
+    // {
+    //     let s = String::from("hello world");
+    //     let len = s.len();
+    //     let slice = &s[3..len];
+    //     println!("slice3:{}", slice);
+    //     let slice = &s[3..];
+    //     println!("slice4:{}", slice);
+    // }
+    // {
+    //     let s = String::from("hello");
+    //     let len = s.len();
+    //     let slice = &s[0..len];
+    //     println!("slice1:{}", slice);
+    //     let slice = &s[..];
+    //     println!("slice2:{}, s:{}", slice, s);
+    // }
+    // {
+    //     let mut s = String::from("hello world");
+    //     let word = first_word(&s);
+    //     println!("the first word is: {}", word);
+    //     s.clear();
+    // }
+    // {
+    // String Slices as Parameters
+    //     let my_string = String::from("hello world");
+    //     let word = first_word(&my_string[..6]);
+    //     println!("{}", word);
+    //     let word = first_word(&my_string[..]);
+    //     println!("{}", word);
+    //     let word = first_word(&my_string);
+    //     println!("{}", word);
+
+    //     let my_string_literal = "hello world";
+    //     let word = first_word(&my_string_literal[0..6]);
+    //     println!("{}", word);
+    //     let word = first_word(&my_string_literal[..]);
+    //     println!("{}", word);
+    //     let word = first_word(&my_string_literal);
+    //     println!("{}", word);
+    // }
+
+    // Other Slices
+    {
+        let a = [1, 2, 3, 4, 5];
+        let slice = &a[1..3];
+        assert_eq!(slice, &[2, 3]);
+    }
 }
 
 // fn takes_ownership(some_string: String) {
@@ -108,7 +178,35 @@ fn main() {
 //     some_string.push_str(", world");
 // }
 
-fn dangle() -> String {
-    let s = String::from("hello");
-    s
-}
+// fn dangle() -> &String {
+//     let s = String::from("hello");
+//     &s
+// }
+
+// fn first_word(s: &String) -> &str {
+//     let bytes = s.as_bytes();
+
+//     for (i, &item) in bytes.iter().enumerate() {
+//         println!("{}, i:{}", item, i);
+
+//         if item == b' ' {
+//             return &s[0..i];
+//         }
+//     }
+
+//     &s[..]
+// }
+
+// fn first_word(s: &str) -> &str {
+//     let bytes = s.as_bytes();
+
+//     for (i, &item) in bytes.iter().enumerate() {
+//         // println!("{}, i:{}", item, i);
+
+//         if item == b' ' {
+//             return &s[0..i];
+//         }
+//     }
+
+//     &s[..]
+// }
