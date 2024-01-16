@@ -1,5 +1,0 @@
-{
-  "rust-analyzer.linkedProjects": [
-    ".\\using-structs\\defining-instantiating\\Cargo.toml"
-  ]
-}

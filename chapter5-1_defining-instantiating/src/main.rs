@@ -12,7 +12,7 @@ struct Point(i32, i32, i32);
 #[derive(Debug)]
 struct AlwaysEqual;
 
-fn main() {1
+fn main() {
     // let mut user1 = User {
     //     active: true,
     //     username: String::from("foo"),
