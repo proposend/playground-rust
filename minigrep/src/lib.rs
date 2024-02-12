@@ -35,10 +35,14 @@ impl Config {
 
 pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     let contents = fs::read_to_string(config.file_path)?;
-    println!("With text:\n{contents}");
+
+    for line in search(&config.query, &contents) {
+        println!("{line}");
+    }
 
     Ok(())
 }
+
 // Extracting the Argument Parser
 // fn parse_config(args: &[String])-> Config {
 //     let query = args[1].clone();
@@ -46,3 +50,15 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
 //
 //     Config {query, file_path}
 // }
+
+pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+    let mut results = Vec::new();
+
+    for line in contents.lines() {
+        if line.contains(query) {
+            results.push(line);
+        }
+    }
+
+    results
+}
