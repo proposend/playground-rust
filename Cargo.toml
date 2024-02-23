@@ -3,5 +3,5 @@
 members = [
     "adder",
     "add_one",
-    "add_two",
+    "add_two", "chapter15_1",
 ]
