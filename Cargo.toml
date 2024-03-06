@@ -2,6 +2,6 @@
 members = [
     "adder",
     "add_one",
-    "add_two", "chapter15_1", "chapter15_2", "chapter15_3", "chapter15_4", "chapter15_5", "chapter15_6", "chapter16_1", "chapter16_2", "chapter16_3", "chapter16_4", "chapter17_1",
+    "add_two", "chapter15_1", "chapter15_2", "chapter15_3", "chapter15_4", "chapter15_5", "chapter15_6", "chapter16_1", "chapter16_2", "chapter16_3", "chapter16_4", "chapter17_1", "chpater17_2",
 ]
 resolver = "2"
