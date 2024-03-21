@@ -12,7 +12,7 @@ fn main() {
     // Creating a Finite Number of Threads
     let pool = ThreadPool::new(4);
 
-    for stream in listener.incoming() {
+    for stream in listener.incoming().take(2) {
 
         // Spawning a Thread for Each Request
         let stream = stream.unwrap();
@@ -25,6 +25,8 @@ fn main() {
             handle_connection(stream);
         });
     }
+
+    println!("Shutting down.");
 }
 
 fn handle_connection(mut stream: TcpStream) {
@@ -33,12 +35,12 @@ fn handle_connection(mut stream: TcpStream) {
 
     // Simulating a Slow Request in the Current Server Implementation
     let (status_line, filename) = match &request_line[..] {
-        "GET / HTTP/1.1" => ("HTTP/1.1 200 OK", "hello.html"),
+        "GET / HTTP/1.1" => ("HTTP/1.1 200 OK", "C:\\Users\\dev\\Workspace\\rust-playground\\chapter20_2\\hello.html"),
         "GET /sleep HTTP/1.1" => {
             thread::sleep(Duration::from_secs(5));
-            ("HTTP/1.1 200 OK", "hello.html")
+            ("HTTP/1.1 200 OK", "C:\\Users\\dev\\Workspace\\rust-playground\\chapter20_2\\hello.html")
         }
-        _ => ("HTTP/1.1 404 NOT FOUND", "404.html"),
+        _ => ("HTTP/1.1 404 NOT FOUND", "C:\\Users\\dev\\Workspace\\rust-playground\\chapter20_2\\404.html"),
     };
 
     let contents = fs::read_to_string(filename).unwrap();
